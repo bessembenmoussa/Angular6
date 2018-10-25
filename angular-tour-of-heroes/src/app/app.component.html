@@ -1,0 +1,37 @@
+<h1>{{title}}</h1>
+<div>
+  Title through a pipe chain:
+  {{title | uppercase}}
+</div>
+<input (keyup)="onKey($event)">
+<p>{{values}}</p>
+<!--<input #box (keyup)="0">
+<p>{{box.value}}</p>-->
+<input #box (keyup)="onKey(box.value)">
+<p>{{values}}</p>
+<input #box1 (keyup.enter)="onEnter(box1.value)">
+<p>{{value}}</p>
+<input #box2
+       (keyup.enter)="update(box2.value)"
+       (blur)="update(box2.value)">
+
+<p>{{value}}</p>
+
+<input #newHero
+       (keyup.enter)="addHero(newHero.value)"
+       (blur)="addHero(newHero.value); newHero.value='' ">
+
+<button (click)="addHero(newHero.value)">Add</button>
+
+<ul><li *ngFor="let hero of heroes">{{hero}}</li></ul>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+
+</nav>
+<!--<app-heroes></app-heroes>-->
+<router-outlet></router-outlet>
+<app-message></app-message>
+
+
+
