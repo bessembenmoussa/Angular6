@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">About Component </div>
+    <div class="panel-body">
+      <p>Info : </p>
+      <ul class="list-group">
+        <li class="list-group-item">Nom: {{info.nom}}</li>
+        <li class="list-group-item">Email: {{info.email}}</li>
+        <li class="list-group-item">Tel: {{info.telephone}}</li>
+      </ul>
+      <!--<div class="form-group">
+        <label>Message:</label>
+        <input type="text" [(ngModel)]="comment.message">
+        <button (click)="addComment()" [disabled]="!comment.message" class="btn btn-primary">Ajouter Commentaire</button>
+      </div> -->
+      <form #f="ngForm" (ngSubmit)="addComment(f.value)">
+        <label>Message:</label>
+        <input required type="text" name="message" ngModel [(ngModel)]="comment.message">
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Ajouter Commentaire</button>
+      </form>
+      <div *ngIf="comments.length>0; else noComments">
+        <h3>Liste des messages :</h3>
+        <ul class="list-group">
+          <li *ngFor="let c of comments" class="list-group-item">
+            {{c.message}}<span class="badge">  {{ c.date|date:'HH:mm:ss'}} </span></li>
+        </ul>
+      </div>
+      <ng-template #noComments>
+        <p> Liste des commentaires est vide</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

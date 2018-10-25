@@ -1,0 +1,18 @@
+p{
+  color: brown;
+  font-size: 18px;
+  line-height: 27px;
+  margin-left: 5%;
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+.space{
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.spaceH{
+  margin-left: 10px;
+}
