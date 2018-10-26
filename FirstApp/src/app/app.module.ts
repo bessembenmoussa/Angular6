@@ -15,6 +15,9 @@ import { EditContactComponent } from './edit-contact/edit-contact.component';
 import {AboutServices} from './service/about.service';
 import { GalleryComponent } from './gallery/gallery.component';
 import {GalleryService} from './service/gallery.service';
+import { FormUploadComponent } from './upload/form-upload/form-upload.component';
+import { ListUploadComponent } from './upload/list-upload/list-upload.component';
+import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
 
 const appRoutes: Routes = [
   {path: 'about', component: AboutComponent},
@@ -34,7 +37,10 @@ const appRoutes: Routes = [
     NewContactComponent,
     NouveauContactComponent,
     EditContactComponent,
-    GalleryComponent
+    GalleryComponent,
+    FormUploadComponent,
+    ListUploadComponent,
+    DetailsUploadComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
