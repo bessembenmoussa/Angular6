@@ -18,6 +18,7 @@ import {GalleryService} from './service/gallery.service';
 import { FormUploadComponent } from './upload/form-upload/form-upload.component';
 import { ListUploadComponent } from './upload/list-upload/list-upload.component';
 import { DetailsUploadComponent } from './upload/details-upload/details-upload.component';
+import { CategoriesComponent } from './categories/categories/categories.component';
 
 const appRoutes: Routes = [
   {path: 'about', component: AboutComponent},
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   {path: 'nouveau-contact', component: NouveauContactComponent},
   {path: 'editContact/:id', component: EditContactComponent},
   {path: 'gallery', component: GalleryComponent},
+  {path: 'categories', component: CategoriesComponent},
   {path: '', redirectTo: '/about', pathMatch: 'full'}
 ];
 
@@ -40,7 +42,8 @@ const appRoutes: Routes = [
     GalleryComponent,
     FormUploadComponent,
     ListUploadComponent,
-    DetailsUploadComponent
+    DetailsUploadComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule

@@ -1,15 +1,37 @@
 <div class="container">
+  <div class="panel panel-primary" *ngIf="mode == 1">
   <div class="panel panel-default">
     <div class="panel-heading">Saisie nouveau contact</div>
     <div class="panel-body">
       <form #f="ngForm" (ngSubmit) = "OnSaveContact(f.value)" >
         <div class="form-group">
           <label class="control-label">Nom :</label>
-          <input type="text" class="form-control" ngModel name="nom" required/>
+          <input type="text" class="form-control" ngModel name="nom" #name="ngModel" id="name"
+                 required  required minlength="2" />
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+
+            <div *ngIf="name?.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name?.errors.minlength">
+              Name must be at least 2 characters long.
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label">Prénom :</label>
-          <input type="text" class="form-control" ngModel name="prenom" required/>
+          <input type="text" class="form-control" ngModel name="prenom" #prenom="ngModel" required minlength="2"/>
+        </div>
+        <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="prenom?.errors.required">
+            Second Name is required.
+          </div>
+          <div *ngIf="prenom?.errors.minlength">
+            Second Name must be at least 2 characters long.
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label">Date de naissance :</label>
@@ -17,7 +39,17 @@
         </div>
         <div class="form-group">
           <label class="control-label">Email :</label>
-          <input type="email" class="form-control" ngModel name="email" required email/>
+          <input type="email" class="form-control" ngModel name="email" #email="ngModel" required email/>
+        </div>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="email?.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email?.errors.email">
+            must be an email.
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label">Tel :</label>
@@ -26,6 +58,39 @@
 
         <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Save Contact</button>
       </form>
+    </div>
+  </div>
+  </div>
+  <div class="panel panel-primary" *ngIf="mode == 2">
+    <div class="panel-heading">Confirmation</div>
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <label class="control-label">ID :</label>
+          <label class="control-label">{{contact.id}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nom :</label>
+          <label class="control-label">{{contact.nom}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Prénom :</label>
+          <label class="control-label">{{contact.prenom}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Date de naissance :</label>
+          <label class="control-label">{{contact.dateNaissance}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Email :</label>
+          <label class="control-label">{{contact.email}}</label>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Tel :</label>
+          <label class="control-label">{{contact.tel}}</label>
+        </div>
+        <button class="btn btn-primary" (click)="mode = 1">Nouveau Contact</button>
+      </div>
     </div>
   </div>
 </div>

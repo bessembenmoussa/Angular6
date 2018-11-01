@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Liste des categories</div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label>Mot clé : </label>
+        <input type="text" [(ngModel)]="motCle">
+        <button class="btn btn-primary" (click)="chercher()">Chercher</button>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th>ID</th><th>Nom</th><th>Edit</th><th>Delete</th>
+        </tr>
+        <tr *ngFor="let c of pageCategories?.content">
+          <td> {{c.id}}</td>
+          <td><a (click)="OnGetContacts(c.id)">{{c.name}}</a></td>
+          <td><a (click)="OnEditCategory(c.id)" class="clickable">Edit</a></td>
+          <td><a (click)="OnDeleteCategory(c)" class="clickable">Delete</a></td>
+
+        </tr>
+      </table>
+      <p></p>
+      <table class="table table-striped" *ngIf="pageContacts">
+        <tr>
+          <th>ID</th><th>Nom</th><th>Prénom</th><th>Date de naissance</th><th>Email</th><th>Tel</th><th>Photo</th>
+        </tr>
+        <tr *ngFor="let c of pageContacts?.content">
+          <td>{{c.contacts.nom}}</td>
+
+
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
